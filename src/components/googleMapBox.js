@@ -1,5 +1,5 @@
 import React, { memo, useContext, useEffect } from 'react';
-import { GoogleMap, Marker , useJsApiLoader} from '@react-google-maps/api';
+import { GoogleMap, Marker, useJsApiLoader} from '@react-google-maps/api';
 import MapStyle from './map.module.css'
 //import { updateUserMarker } from '../../store/deliveryActions'
 

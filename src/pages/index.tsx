@@ -5,6 +5,7 @@ import { BookOpenIcon, CodeIcon, ShareIcon } from '@heroicons/react/outline'
 import ThemeSwitcher from '@/components/ThemeSwitcher'
 //import Mapper from '../components/mapper'
 import MapComponent from '../components/maptest'
+import Map from '../components/map'
 
 
 const Home: FC = () => {
@@ -19,8 +20,17 @@ const Home: FC = () => {
 			<ThemeSwitcher className="absolute bottom-6 right-6" />
 			<div className="max-w-6xl mx-auto sm:px-6 lg:px-8">
 				<div className="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+				<h3 className="text-lg leading-6 font-medium text-white">
+					1. Connect Wallet
+				</h3>
+				<h3 className="text-lg leading-6 font-medium text-white">
+					2. Verify Your Location
+				</h3>
+				<h3 className="text-lg leading-6 font-medium text-white">
+					See where all your Web3 frenz are at IRL!!!
+				</h3>
 					<div id="map">
-						<MapComponent></MapComponent>
+						<Map></Map>
 					</div>
 					<div className="shadow sm:rounded-md sm:overflow-hidden">
 						<div className="bg-white py-6 px-4 space-y-6 sm:p-4">
@@ -46,7 +56,7 @@ const Home: FC = () => {
 									/>
 									</div>
 									<div className="ml-3 text-sm">
-									<label htmlFor="comments" className="font-medium text-white">
+									<label htmlFor="comments" className="font-large text-white">
 										NFT Group 1
 									</label>
 									<p className="text-gray-500">Get notified when someones posts a comment on a posting.</p>
