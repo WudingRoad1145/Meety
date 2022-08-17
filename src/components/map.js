@@ -1,5 +1,21 @@
 import React, { useState } from "react";
 import { GoogleMap, useJsApiLoader, InfoWindow, Marker } from "@react-google-maps/api";
+import {
+    auth,
+    arrayUnion,
+    firestore,
+    collection,
+    doc,
+    getDoc,
+    getDocs,
+    addDoc,
+    firestoreQuery,
+    orderBy,
+    updateDoc,
+    setDoc,
+    serverTimestamp,
+  } from "../../firebase";
+  import {useRouter} from "next/router"
 
 var json = '{"name": "Peter", "age": 22, "country": "United States"}';
 
@@ -69,6 +85,7 @@ const MEETY_ALL = [
   }
 ];
 
+/** 
 const NFT_GROUP = [
 	{
 		id: 1,
@@ -97,11 +114,28 @@ const NFT_GROUP = [
 		description: "To the eternal summer!",
 	},
 ];
+*/
 
 
 function Map() {
-  const [activeMarker, setActiveMarker] = useState(null);
-  const [center, setCenter] = useState({lat:30,lng:-122});
+    const [activeMarker, setActiveMarker] = useState(null);
+    const [center, setCenter] = useState({lat:30,lng:-122});
+    const [NFT_GROUP, setNFT_GROUP] = useState([]);
+    const router = useRouter();
+    const {
+        query:{
+        walletAddress
+        }
+        } = router;
+    const props ={
+        walletAddress
+      }
+    
+    function showData(){
+        console.log(props)
+      }
+
+  //query - set new NFT_GROUP
 
   const handleActiveMarker = (marker) => {
     if (marker === activeMarker) {
@@ -128,6 +162,7 @@ function Map() {
 
   function getLocation(){
     const onSuccess = (loc) => {
+        console.log(props)
         console.log(center);
         const lat =loc.coords.latitude;
         const long = loc.coords.longitude;
