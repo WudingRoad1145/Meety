@@ -11,7 +11,7 @@ const containerStyle = {
     height: '700px'
   };
 
-const center = {
+var center = {
     lat: 37.774,
     lng: -122.442
 };
@@ -21,7 +21,7 @@ let shape = {
     type: 'circle'
 };
 
-const NFT_1 = [
+const MEETY_ALL = [
   {
     id: 1,
     name: "Will",
@@ -69,8 +69,39 @@ const NFT_1 = [
   }
 ];
 
+const NFT_GROUP = [
+	{
+		id: 1,
+		name: "Meety Frenz",
+		description: "Get notified wen new events!",
+		users:[]
+	},
+	{
+		id: 2,
+		name: "Megami",
+		description: "",
+	},
+	{
+		id: 3,
+		name: "055",
+		description: "Generative Art!",
+	},
+	{
+		id: 4,
+		name: "Azuki",
+		description: "Wagmi",
+	},
+	{
+		id: 5,
+		name: "2022N&WSF",
+		description: "To the eternal summer!",
+	},
+];
+
+
 function Map() {
   const [activeMarker, setActiveMarker] = useState(null);
+  const [center, setCenter] = useState({lat:30,lng:-122});
 
   const handleActiveMarker = (marker) => {
     if (marker === activeMarker) {
@@ -86,7 +117,7 @@ function Map() {
   const [map, setMap] = React.useState(null)
   const onLoad = React.useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds(center);
-    NFT_1.forEach(({ position }) => bounds.extend(position));
+    MEETY_ALL.forEach(({ position }) => bounds.extend(position));
     map.fitBounds(bounds);
     setMap(map)
   }, [])
@@ -97,14 +128,18 @@ function Map() {
 
   function getLocation(){
     const onSuccess = (loc) => {
+        console.log(center);
         const lat =loc.coords.latitude;
         const long = loc.coords.longitude;
         const crd = loc.coords;
+        center.lat = loc.coords.latitude;
+        center.long = loc.coords.longitude;
+        setCenter(center);
         console.log('Your current position is:');
         console.log(`Latitude : ${crd.latitude}`);
         console.log(`Longitude: ${crd.longitude}`);
         console.log(`More or less ${crd.accuracy} meters.`);
-
+        console.log(center);
     }
 
     const onError =()=>{
@@ -121,7 +156,8 @@ function Map() {
           onClick={getLocation}
       >
           Verify Location
-      </button><GoogleMap
+      </button>
+      <GoogleMap
           onLoad={onLoad}
           onUnmount={onUnmount}
           onClick={ev => {
@@ -133,7 +169,7 @@ function Map() {
           center={center}
           zoom={12}
       >
-              {NFT_1.map(({ id, name, telegram, pfp,twitter,base, position }) => (
+              {MEETY_ALL.map(({ id, name, telegram, pfp,twitter,base, position }) => (
                   <Marker
                     key={id}
                     position={position}
@@ -157,7 +193,41 @@ function Map() {
                     ) : null}
                   </Marker>
               ))}
-          </GoogleMap></>
+          </GoogleMap>
+          <div className="shadow sm:rounded-md sm:overflow-hidden">
+						<div className="bg-white py-6 px-4 space-y-6 sm:p-4">
+							<div>
+								<h3 className="text-lg leading-6 font-medium text-gray-900">NFT Groups</h3>
+								<p className="mt-1 text-sm text-gray-500">
+								Select NFTs group's you would like to share your proof of location.
+								</p>
+							</div>
+						</div>
+					</div>
+					<form action="#" method="POST">
+					<div className="bg-white grid grid-cols-4 md:grid-cols-4">
+						{NFT_GROUP.map(({ id, name, description }) => (
+							<div className="mt-4 space-y-4">
+							<div className="flex items-start">
+								<div className="h-5 flex items-center">
+									<input
+										id="group"
+										name="group"
+										type="checkbox"
+										className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+									/>
+								</div>
+								<div className="ml-3 text-sm">
+									<label htmlFor="comments" className="font-medium text-black">
+										{name}
+									</label>
+									<p className="text-gray-500">{description}</p>
+								</div>
+							</div>
+							</div>
+						))}
+					</div>
+					</form></>
   ):<></>
 }
 
