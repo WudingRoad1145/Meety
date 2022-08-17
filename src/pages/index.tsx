@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { APP_NAME } from '@/lib/consts'
 import ConnectWallet from '@/components/ConnectWallet'
 import { BookOpenIcon, CodeIcon, ShareIcon } from '@heroicons/react/outline'
-import ThemeSwitcher from '@/components/ThemeSwitcher'
+//import ThemeSwitcher from '@/components/ThemeSwitcher'
 //import Mapper from '../components/mapper'
 import MapComponent from '../components/maptest'
 import Map from '../components/map'
@@ -11,24 +11,24 @@ import Map from '../components/map'
 const Home: FC = () => {
 	return (
 		<div className="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-			<div className="absolute top-6 left-6">
+			<div className="absolute top-6 left-12">
 				<h1 className="text-6xl font-bold dark:text-white">{APP_NAME}</h1>
 			</div>
-			<div className="absolute top-6 right-6">
+			<div className="absolute top-6 right-12">
 				<ConnectWallet />
 			</div>
-			<ThemeSwitcher className="absolute bottom-6 right-6" />
+			
 			<div className="max-w-6xl mx-auto sm:px-6 lg:px-8">
-				<div className="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-				<h3 className="text-lg leading-6 font-medium text-white">
-					1. Connect Wallet
-				</h3>
-				<h3 className="text-lg leading-6 font-medium text-white">
-					2. Verify Your Location
-				</h3>
-				<h3 className="text-lg leading-6 font-medium text-white">
-					See where all your Web3 frenz are at IRL!!!
-				</h3>
+				<div className="mt-28 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+					<h3 className="text-lg leading-6 font-medium text-black">
+						1. Connect Wallet
+					</h3>
+					<h3 className="text-lg leading-6 font-medium text-black">
+						2. Verify Your Location
+					</h3>
+					<h3 className="text-lg leading-6 font-medium text-black">
+						See where all your Web3 frenz are at IRL!!!
+					</h3>
 					<div id="map">
 						<Map></Map>
 					</div>
@@ -43,9 +43,9 @@ const Home: FC = () => {
 						</div>
 					</div>
 					<form action="#" method="POST">
-					<div className="grid grid-cols-4 md:grid-cols-4">
+					<div className="bg-white grid grid-cols-4 md:grid-cols-4">
 						<div> 
-							<div className="mt-4 space-y-4">
+							<div className="mt-4 space-y-6">
 								<div className="flex items-start">
 									<div className="h-5 flex items-center">
 									<input
@@ -56,10 +56,10 @@ const Home: FC = () => {
 									/>
 									</div>
 									<div className="ml-3 text-sm">
-									<label htmlFor="comments" className="font-large text-white">
-										NFT Group 1
+									<label htmlFor="comments" className="font-medium text-black">
+										Meety Frenz
 									</label>
-									<p className="text-gray-500">Get notified when someones posts a comment on a posting.</p>
+									<p className="text-gray-500">Get notified wen new events!</p>
 									</div>
 								</div>
 							</div>
@@ -77,7 +77,7 @@ const Home: FC = () => {
 									/>
 									</div>
 									<div className="ml-3 text-sm">
-									<label htmlFor="comments" className="font-medium text-white">
+									<label htmlFor="comments" className="font-medium text-black">
 										NFT Group 2
 									</label>
 									<p className="text-gray-500">Get notified when someones posts a comment on a posting.</p>
@@ -98,7 +98,7 @@ const Home: FC = () => {
 									/>
 									</div>
 									<div className="ml-3 text-sm">
-									<label htmlFor="comments" className="font-medium text-white">
+									<label htmlFor="comments" className="font-medium text-black">
 										NFT Group 3
 									</label>
 									<p className="text-gray-500">Get notified when someones posts a comment on a posting.</p>
@@ -119,7 +119,7 @@ const Home: FC = () => {
 									/>
 									</div>
 									<div className="ml-3 text-sm">
-									<label htmlFor="comments" className="font-medium text-white">
+									<label htmlFor="comments" className="font-medium text-black">
 										NFT Group 4
 									</label>
 									<p className="text-gray-500">Get notified when someones posts a comment on a posting.</p>
